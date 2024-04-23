@@ -19,7 +19,7 @@ export default function PartnerPage() {
                                 Partners
                             </span>
                         </h1>
-                        <span className="text-2xl text-gray-50">The friends we&apos;ve made along the way.</span>
+                        <span className="text-2xl text-gray-50">All of the friends we&apos;ve made along the way.</span>
                     </div>
             </main>
             <Footer />
