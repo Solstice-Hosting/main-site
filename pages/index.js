@@ -141,7 +141,7 @@ export default function Home() {
       </div>
       <div className='lg:p-20'>
         <span className='text-5xl text-gray-100 font-bold gap-4 select-none hidden md:flex'>A little taste of 
-        <Image src="/assets/colour.svg" width="210" height="100"/></span>
+        <Image src="/assets/colour.svg" width="210" height="100" alt={'Solstice'}/></span>
         <div className='grid grid-cols-1 p-2 gap-8 lg:grid-cols-4 pt-8'>
           <TasteBit text={"Customer-First"} icon={faFaceSmile} cols={3}/>
           <TasteBit text={"Stellar support"} icon={faHandshakeSimple} cols={1}/>
