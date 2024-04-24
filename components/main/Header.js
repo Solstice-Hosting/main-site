@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBlackTie } from '@fortawesome/free-brands-svg-icons';
 import { faShoppingCart, faUser, faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
   Sheet,
   SheetContent,
@@ -80,7 +81,7 @@ export default function Header({ categories }) {
       }`}
       style={{ zIndex: 60 }}
     >
-      <Image src="/assets/solstice.svg" alt="Solstice Logo" width={200} height={100} />
+      <Link href={'https://solsticehosting.co.uk'}><Image src="/assets/solstice.svg" alt="Solstice Logo" width={200} height={100} /></Link>
       <ul className='flex text-gray-200 gap-x-12 gap-y-2 items-center flex-wrap justify-center' style={{ zIndex: 60 }}>
         <HeaderLink special={true} category={{ name: 'Home', slug: '/' }} />
         {headings.map((heading, index) => (
