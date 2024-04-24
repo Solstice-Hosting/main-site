@@ -58,7 +58,7 @@ export default function StorePage({ categoryInformation, products }) {
     );
 }
 
-export async function getServerSideProps(context) {
+async function getServerSideProps(context) {
     const pb = new PocketBase('https://pb.solsticehosting.co.uk');
     const slug = context.params.page;
     
