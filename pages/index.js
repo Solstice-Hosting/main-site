@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import Footer from '@/components/main/Footer';
 import Head from 'next/head';
 import PocketBase from "pocketbase";
+import Link from 'next/link';
 
 export default function Home() {
   const router = useRouter();
@@ -87,13 +88,14 @@ export default function Home() {
           })
           const hotProducts = await pb.collection('products').getFullList({
             filter: 'hot=1',
+            expand: 'category',
             sort: 'price'
           })
           const partners = await pb.collection('partners').getFullList({
             filter: 'display=1',
             sort: 'title',
           })
-          console.log(partners);
+          console.log(hotProducts);
           setReviews(reviews.items);
           setHotProducts(hotProducts);
           setPartners(partners);
@@ -203,16 +205,16 @@ export default function Home() {
                 key={index}
                 id={index}
                 title={product.name} 
+                category={product.expand.category}
                 price={product.price} 
                 items={product.features}
+                itemId={product.itemId}
                 currentId={hoveredCard}
                 setHoveredCard={setHoveredCard}
               />      
               )) }
               <div className='col-span-1'></div>  
               <div className='col-span-1'></div>           
-              <button className='col-span-6 bg-white p-4 rounded-lg shadow-2xl font-semibold hover:scale-[101%] transition-all duration-100'
-              onClick={() => router.push('/web')}>View our full web selection</button>
 
             </div>
               <span className='pb-4 w-full text-center text-2xl italic text-gray-600 tracking-wide'>All come with friendly, stellar support included for <span className='font-bold'>free</span>.</span>
@@ -262,7 +264,7 @@ export default function Home() {
                 />
               ))}
             </div>
-            <p className='text-2xl font-semibold text-gray-800 text-center'>Read more reviews just like these on our <span className='font-extrabold cursor-pointer' onClick={() => window.open('https://uk.trustpilot.com/review/solsticehosting.co.uk', '_blank')}>TrustPilot</span></p>
+            <p className='text-2xl font-semibold text-gray-800 text-center'>Read more reviews just like these on our <Link className='font-extrabold cursor-pointer' href={'https://uk.trustpilot.com/review/solsticehosting.co.uk'} target='_blank'>TrustPilot</Link></p>
         </div>
       </div> )}
         <Footer />

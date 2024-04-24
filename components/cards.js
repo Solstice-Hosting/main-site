@@ -2,6 +2,8 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import {motion} from 'framer-motion';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 /* export function Card({title, price, item1, icon1, item2, icon2, item3, icon3, item4, icon4, item5, icon5, item6, icon6, item7, icon7}) {
     return (
@@ -37,10 +39,16 @@ export function Card(props) {
       >
           <span className='text-4xl font-extrabold text-gray-200 pt-16 pb-4 px-16'>{props.title}</span>
           <span className='font-bold pb-8 text-white text-xl'>£{props.price} / month*</span>
-          <span className='py-6 pb-8 flex flex-col bg-red-50 w-full text-gray-700 px-20 font-medium gap-4'>
+          <span className='py-6 pb-8 flex flex-col bg-red-50 w-full text-gray-700 px-10 font-medium gap-4'>
               {props.items && (props.items).map((item, index) => (
-                <span className='flex gap-4 items-center whitespace-nowrap' key={index}>{item}</span>
+                <span className='px-10 flex gap-4 items-center whitespace-nowrap' key={index}>{item}</span>
               ))}
+
+              <Link href={`https://billing.solsticehosting.co.uk/store/${props?.category?.billingSlug}/${props.itemId}`} target='_blank'>
+              <Button className="w-[100%] mt-8 rounded-lg bg-gray-900">
+                  Order
+              </Button>
+              </Link>
           </span>
       </motion.div>
   )
@@ -60,8 +68,9 @@ export function StaffCard({name, title, desc, image, email, router}) {
           <p className='text-gray-400 text-xl'>{title}</p>
           </div>
           <p className='text-white'>{desc}</p>
+          <Link href={`mailto:${email}`}>
           <motion.button 
-          className='w-1/2 bg-gray-300 py-2 px-6 rounded-lg shadow-2xl cursor-pointer' onClick={() => router.push(`mailto:${email}`)}
+          className='w-1/2 bg-gray-300 py-2 px-6 rounded-lg shadow-2xl cursor-pointer'
           whileHover={{
             scale: 1.05
           }}
@@ -69,6 +78,7 @@ export function StaffCard({name, title, desc, image, email, router}) {
             scale: 0.95
           }}
           >Email</motion.button>
+          </Link>
         </div>
         <Image src={image} alt={name} width="300" height="300" className='hidden lg:block w-1/2 grayscale rounded-l-full outline-2 group-hover:grayscale-0 transition-all duration-200 outline-gray-700 outline shadow-2xl'/>
       </div>
@@ -121,7 +131,7 @@ export function ShopCard(props) {
             <span className='flex gap-4 items-center whitespace-nowrap' key={index}>{item}</span>
           ))}
           </span>
-          <button className='w-4/5 bg-gray-900 text-white py-2 rounded-lg transition-all duration-200 hover:font-semibold hover:scale-95' onClick={() => (props.link && window.open(props.link, '_blank'))}>{props.link ? 'Order' : 'Coming Soon'}</button>
+          <Link  href={`${props.link && props.link}`} className='w-full flex justify-center' target='_blank'><button className='w-4/5 bg-gray-900 text-white py-2 rounded-lg transition-all duration-200 hover:font-semibold hover:scale-95'>{props.link ? 'Order' : 'Coming Soon'}</button></Link>
         </div>
       </div>
     </div>
@@ -141,7 +151,7 @@ export function ShopSpecialCard(props) {
             <span className='flex gap-4 items-center whitespace-nowrap' key={index}>{item}</span>
           ))}
         </span>
-        <button className='w-4/5 bg-gray-900 text-white py-2 rounded-lg transition-all duration-200 hover:font-semibold hover:scale-95' onClick={() => (props.link && window.open(props.link, '_blank'))}>{props.link ? 'Order' : 'Coming Soon'}</button>
+        <Link  href={`${props.link && props.link}`} className='w-full flex justify-center' target='_blank'><button className='w-4/5 bg-gray-900 text-white py-2 rounded-lg transition-all duration-200 hover:font-semibold hover:scale-95'>{props.link ? 'Order' : 'Coming Soon'}</button></Link>
       </div>
     </div>
   </div>
