@@ -55,7 +55,7 @@ export default function StorePage() {
             <Header />
             <div className="w-full flex items-center p-12 flex-col bg-gray-950 gap-8 min-h-screen">
                 <div className="flex flex-col gap-2 items-center p-4 lg:p-10 text-center">
-                    <h1 className="font-extrabold text-5xl text-gray-100 whitespace-nowrap">
+                    <h1 className="font-extrabold text-5xl text-gray-100 whitespace-wrap">
                         <span className="hidden lg:block">{categoryInformation?.categoryWhamWord}</span>
                         <span className="bg-gradient-to-r from-orange-400 transition-all duration-200 to-purple-500 bg-clip-text text-transparent hover:saturate-150 hover:to-orange-400 hover:from-purple-500">
                             {categoryInformation?.categoryNameLong}

@@ -48,14 +48,25 @@ export default function Login() {
                         }
                     }
                     catch (e) {
-                        setProperError("An account with this email already exists.");
+                        setProperError("An error occured whilst creating your account. Are your passwords the same?");
                     }
     
                 }
                 else {
                     setProperError(null);
                     setSuccess(null);
-                    setInfo('Username, Password or Email invalid.')
+                    if (!emailRegex.test(email)) {
+                        setInfo("Email address invalid.");
+                    }
+                    else if (password.length <= 2) {
+                        setInfo("Password is too short.");
+                    }
+                    else if (username.length <= 2) {
+                        setInfo("Username is too short.");
+                    }
+                    else {
+                        setInfo("An unknown error occured.");
+                    }
                 }
             }
             

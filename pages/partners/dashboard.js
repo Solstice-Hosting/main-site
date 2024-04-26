@@ -54,12 +54,13 @@ export default function PartnerDashboard() {
     return (
         <>
             <Header />
-            <main className="min-h-screen w-screen bg-gray-950 flex gap-8 flex-col p-24">
+            <main className="min-h-screen w-screen bg-gray-950 flex gap-8 flex-col p-8 lg:p-24">
                 <Suspense fallback="Loading...">
                     {partnerInfo.length > 0 && (
                     <>
                         <div className="w-10/12 flex flex-col gap-6">
-                            <h1 className="text-white font-extrabold text-4xl">Edit your Partnership Information</h1>
+                            <h1 className="text-white font-extrabold text-4xl hidden lg:block">Edit your Partnership Information</h1>
+                            <h1 className="text-white font-extrabold text-4xl block lg:hidden text-center w-full">Edit Info</h1>
                         </div>
                         <div className="flex flex-col gap-8 text-white">
                             {partnerInfo.map((partner) => (
@@ -111,9 +112,9 @@ function PartnerComp({ key, partner }) {
     return (
         <>
             <div className="w-full bg-gray-800 min-h-content rounded-lg border-2 border-gray-700 p-4 flex flex-col gap-8">
-                <div className="flex w-full justify-between items-center">
+                <div className="flex w-full justify-between items-center flex-col lg:flex-row">
                     <input
-                        className="bg-gray-700 rounded-lg text-white outline-none p-4 text-2xl font-extrabold w-1/2 border-2 border-gray-600"
+                        className="bg-gray-700 rounded-lg text-white outline-none p-4 text-2xl font-extrabold w-1/2 border-2 border-gray-600 text-center lg:text-left"
                         value={partnerName}
                         onChange={(e) => setPartnerName(e.target.value)}
                     />
@@ -131,7 +132,7 @@ function PartnerComp({ key, partner }) {
 
                     </textarea>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-col lg:flex-row">
                     <div className="flex flex-col gap-2 w-full">
                         <span className="font-bold flex gap-4 items-center">Website <span className="font-normal text-gray-400">(optional)</span></span>
                         <input
