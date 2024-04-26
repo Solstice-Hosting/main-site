@@ -16,8 +16,10 @@ export default function PartnerPage() {
     useEffect(() => {
         const pb = new PocketBase("https://pb.solsticehosting.co.uk");
         const getPartners = async () => {
-            const authData = await pb.collection('users').authRefresh();
-            setUserId(authData?.record?.id);
+            if (pb.authStore.isValid && !pb.authStore.isAdmin) {
+                const authData = await pb.collection('users').authRefresh();
+                setUserId(authData?.record?.id);
+            }
             const partners = await pb.collection('partners').getFullList({
                 filter: 'display = 1'
             });
