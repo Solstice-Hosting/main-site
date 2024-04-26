@@ -87,6 +87,7 @@ export default function Header({ categories }) {
         {headings.map((heading, index) => (
           <HeaderLink key={index} category={{ name: heading.categoryName, slug: `/store/${heading.slug}` }} />
         ))}
+        <HeaderLink category={{name: 'Partners', slug: '/partners'}} />
         {adminUser && (<>
           <HeaderLink category={{ name: 'Admin', slug: `/admin` }} />
         </>)}

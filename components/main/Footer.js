@@ -9,7 +9,8 @@ export default function Footer() {
         <>
             <div className="w-full h-[1rem] bg-gradient-to-l transition-all duration-200 hover:saturate-150 from-orange-500 to-purple-500 content-[] shadow-lg hover:to-orange-500 hover:from-purple-500"></div>
             <div className="w-full bg-gray-700 flex justify-center items-center flex-col gap-4 pb-4">
-                <div className="flex w-full lg:w-1/2 justify-evenly p-8">
+                <div className="flex w-full lg:w-1/2 justify-evenly p-8 gap-4">
+                    <Link href={'/partners'} className="text-gray-200 font-semibold hover:text-gray-300">Partners</Link>
                     <Link href={'/sla'} className="text-gray-200 font-semibold hover:text-gray-300">SLA</Link>
                     <Link href={'/privacy'} className="text-gray-200 font-semibold hover:text-gray-300">Privacy</Link>
                     <Link href={'/terms'} className="text-gray-200 font-semibold hover:text-gray-300">Terms</Link>
