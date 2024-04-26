@@ -39,13 +39,13 @@ export default function PartnerPage() {
             <Header />
             <main className="min-h-[80vh] w-full bg-gray-950">
                     <div className="flex flex-col gap-2 items-center p-4 lg:p-10 text-center">
-                        <h1 className="font-extrabold text-5xl text-gray-100 whitespace-nowrap">
+                        <h1 className="font-extrabold text-3xl lg:text-5xl text-gray-100 whitespace-nowrap">
                             <span className="hidden lg:block">Our</span>
                             <span className="bg-gradient-to-r from-orange-400 transition-all duration-200 to-purple-500 bg-clip-text text-transparent hover:saturate-150 hover:to-orange-400 hover:from-purple-500">
                                 Partners
                             </span>
                         </h1>
-                        <span className="text-2xl text-gray-50">All of the friends we&apos;ve made along the way.</span>
+                        <span className="text-lg lg:text-2xl text-gray-50">All of the friends we&apos;ve made along the way.</span>
                     </div>
                     <div
                         className="flex flex-col gap-10 px-10"
@@ -60,13 +60,14 @@ export default function PartnerPage() {
                                 alt={partner.title}
                             />
                             <div className="w-full flex flex-col justify-between h-full items-start gap-4">
-                                <h3 className="text-3xl font-extrabold text-white w-full flex gap-12 items-end">
-                                    {partner.title}  {(partner.account).includes(userId) && (<span className="font-semibold text-gray-400 text-lg italic"> Pssst... this is you!</span>)}
-                                </h3>
+                                <h3 className="text-3xl font-extrabold text-white w-full items-center flex gap-x-12 lg:items-end flex-col lg:flex-row">
+                                    {partner.title}  
+                                    {(partner.account).includes(userId) && (<span className="font-semibold text-gray-400 text-lg italic"> Pssst... this is you!</span>)}
+                                </h3> 
                                 <p className="w-full whitespace-pre-wrap text-white">
                                     {partner.memo}
                                 </p>
-                                <div className="flex gap-4">
+                                <div className="flex gap-4 w-full justify-center lg:justify-start">
                                     {partner.site &&
                                     (<Link href={`${partner.site ? partner.site : ''}`} target="_blank">
                                         <Button className="bg-gray-800 hover:bg-gray-700 h-full w-40">
