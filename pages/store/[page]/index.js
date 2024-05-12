@@ -21,9 +21,7 @@ export default function StorePage() {
     const [products, setProducts] = useState(null);
 
     useEffect(() => {
-        console.log({
-            "Page Version": "0.0.1"
-        });
+        console.log(`[SolHos] Loading ${page}`);
         const fetchStoreData = async () => {
             const pb = new PocketBase('https://pb.solsticehosting.co.uk');
 
