@@ -32,8 +32,6 @@ export default function PartnerDashboard() {
         if (authenticated === true) {
             if (!adminAccount) {            
                 const getPartnerInfo = async () => {
-                const authData = await pb.collection('users').authRefresh();
-                console.log(authData.record.id);
                 const gettingPartnerInfo = await pb.collection('partners').getFullList({
                     filter: `account ~ "${pb.authStore.model.id}"`
                 });
@@ -92,21 +90,32 @@ function PartnerComp({ key, partner }) {
     }, [partner]);
 
     const saveChanges = async () => {
-        const tryToUpdate = await pb.collection('partners').update(partner.id, {
-            "title": partnerName,
-            "memo": memoInfo,
-            "site": site,
-            "discord": discord,
-            "logo": partner.logo,
-        });
+        console.log(partner);
+        if (partner.id) {
+            try {
+                const tryToUpdate = await pb.collection('partners').update(partner.id, {
+                    "title": partnerName,
+                    "memo": memoInfo,
+                    "site": site,
+                    "discord": discord,
+                    "logo": partner.logo,
+                });
+        
+        
+                if (!tryToUpdate.code) {
+                    setStatus('success');
+                    setTimeout(() => {setStatus('')}, 1500);
+                }
+                else {
+                    setStatus(tryToUpdate.message);
+                }
+            }
+            catch (err) {
+                console.error(err);
+            }
 
-        if (!tryToUpdate.code) {
-            setStatus('success');
-            setTimeout(() => {setStatus('')}, 1500);
         }
-        else {
-            setStatus(tryToUpdate.message);
-        }
+
     };
 
     return (
